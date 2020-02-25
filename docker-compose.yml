@@ -1,0 +1,23 @@
+version: "3.2"
+services:
+  ffmpeg_builder:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: ffmpeg_builder
+    volumes:
+      - ./ffmpeg:/root/ffmpeg_sources
+    working_dir: /root/ffmpeg_sources
+    tty: true
+    networks:
+      - ffnet
+  nginx_rtmp:
+    image: tiangolo/nginx-rtmp
+    container_name: nginx_rtmp
+    ports:
+      - 1935:1935
+    networks:
+      - ffnet
+networks:
+  ffnet:
+    driver: bridge
