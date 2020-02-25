@@ -1,6 +1,6 @@
 FROM amd64/ubuntu:18.04
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --fix-missing\
 	texinfo \
 	pax \
 	bzip2 \
@@ -47,6 +47,7 @@ RUN apt-get update && apt-get install -y \
 	curl \
 	vim
 
+RUN mkdir /root/ffmpeg_sources
 COPY build.sh /
 
 RUN chmod +x /build.sh

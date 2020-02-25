@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ ! -d "/root/ffmpeg_sources/ffmpeg" ]]; then
+    cd /root/ffmpeg_sources && \
     wget -O ffmpeg-snapshot.tar.bz2 https://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 && \
     tar xjvf ffmpeg-snapshot.tar.bz2
 fi
